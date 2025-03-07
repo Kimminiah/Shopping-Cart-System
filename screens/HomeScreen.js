@@ -77,6 +77,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: Platform.OS === "web" ? 40 : 20, // More padding for web
+    maxWidth: Platform.OS === "web" ? 800 : "100%", // Limit width for web
+    alignSelf: Platform.OS === "web" ? "center" : "stretch", // Center on web
   },
   header: {
     backgroundColor: "rgba(255, 165, 0, 0.8)", // Semi-transparent orange
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
   },
   cartButtonContainer: {
     padding: Platform.OS === "web" ? 40 : 20, // More padding for web
+    alignItems: "center", // Center the button
   },
   light: {
     backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white
