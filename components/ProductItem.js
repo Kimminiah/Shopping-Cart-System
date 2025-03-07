@@ -5,8 +5,12 @@ const ProductItem = ({ product, onAddToCart }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{product.name}</Text>
-      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
-      <Button title="Add to Cart" onPress={onAddToCart} />
+      <Text style={styles.price}>₱{product.price.toFixed(2)}</Text>
+      <Button
+        title="Add to Cart"
+        onPress={onAddToCart}
+        color="#FFA500" 
+      />
     </View>
   );
 };
@@ -18,14 +22,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    borderBottomColor: "#FFA500", 
+    marginBottom: 10,
   },
   name: {
     fontSize: 16,
+    color: "#000000", 
   },
   price: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "#FFA500", 
   },
 });
 
