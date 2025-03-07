@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/shoppi.jpg")}
+      source={require("../assets/bg.jpg")}
       style={styles.background}
     >
       <View style={[styles.container, isDarkMode ? styles.dark : styles.light]}>

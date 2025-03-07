@@ -24,7 +24,7 @@ const CheckoutScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/checkout-bg.jpg")}
+      source={require("../assets/bg2.jpg")}
       style={styles.background}
     >
       <View style={[styles.container, isDarkMode ? styles.dark : styles.light]}>
