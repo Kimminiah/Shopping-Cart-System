@@ -5,7 +5,7 @@ const ProductItem = ({ product, onAddToCart }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{product.name}</Text>
-      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+      <Text style={styles.price}>₱{product.price.toFixed(2)}</Text>
       <Button
         title="Add to Cart"
         onPress={onAddToCart}

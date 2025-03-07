@@ -5,7 +5,7 @@ const CartItem = ({ item, onAdd, onRemove }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+      <Text style={styles.price}>₱{item.price.toFixed(2)}</Text>
       <View style={styles.quantityContainer}>
         <Button title="-" onPress={onRemove} color="#FFA500" /> {/* Orange button */}
         <Text style={styles.quantity}>{item.quantity}</Text>
