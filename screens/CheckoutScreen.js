@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, Button, Alert, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, Button, StyleSheet, ImageBackground, Alert, Platform } from "react-native"; 
 import { CartContext } from "../context/CartContext";
 
 const CheckoutScreen = ({ navigation }) => {
@@ -24,7 +24,7 @@ const CheckoutScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/bg2.jpg")}
+      source={require("../assets/bg2.jpg")} 
       style={styles.background}
     >
       <View style={[styles.container, isDarkMode ? styles.dark : styles.light]}>
@@ -39,7 +39,7 @@ const CheckoutScreen = ({ navigation }) => {
         {cart.map((item) => (
           <View key={item.id} style={styles.itemContainer}>
             <Text style={[styles.itemText, isDarkMode ? styles.darkText : styles.lightText]}>
-              {item.name} - ${item.price.toFixed(2)} x {item.quantity}
+              {item.name} - ₱{item.price.toFixed(2)} x {item.quantity}
             </Text>
           </View>
         ))}
@@ -47,7 +47,7 @@ const CheckoutScreen = ({ navigation }) => {
         {/* Total Price */}
         <View style={styles.totalContainer}>
           <Text style={[styles.totalText, isDarkMode ? styles.darkText : styles.lightText]}>
-            Total: ${totalPrice.toFixed(2)}
+            Total: ₱{totalPrice.toFixed(2)}
           </Text>
         </View>
 
@@ -72,16 +72,18 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20,
+    padding: Platform.OS === "web" ? 40 : 20, // More padding for web
+    maxWidth: Platform.OS === "web" ? 800 : "100%", // Limit width for web
+    alignSelf: Platform.OS === "web" ? "center" : "stretch", // Center on web
   },
   header: {
     backgroundColor: "rgba(255, 165, 0, 0.8)", // Semi-transparent orange
-    padding: 20,
+    padding: Platform.OS === "web" ? 30 : 20, // More padding for web
     alignItems: "center",
     borderRadius: 10,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: Platform.OS === "web" ? 32 : 24, // Larger font for web
     fontWeight: "bold",
   },
   itemContainer: {
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#FFA500", // Orange border
   },
   itemText: {
-    fontSize: 16,
+    fontSize: Platform.OS === "web" ? 20 : 16, // Larger font for web
   },
   totalContainer: {
     padding: 20,
@@ -99,11 +101,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   totalText: {
-    fontSize: 18,
+    fontSize: Platform.OS === "web" ? 24 : 18, // Larger font for web
     fontWeight: "bold",
   },
   checkoutButtonContainer: {
-    padding: 20,
+    padding: Platform.OS === "web" ? 40 : 20, // More padding for web
+    alignItems: "center", // Center the button
   },
   light: {
     backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white

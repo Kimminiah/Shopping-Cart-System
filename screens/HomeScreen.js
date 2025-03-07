@@ -3,7 +3,7 @@ import { View, Text, Button, FlatList, StyleSheet, ImageBackground, Image, Platf
 import { CartContext } from "../context/CartContext";
 import ProductItem from "../components/ProductItem";
 
-// Updated products with images and new names
+// Updated products with images
 const products = [
   {
     id: 1,
@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/bg.jpg")}
+      source={require("../assets/bg.jpg")} 
       style={styles.background}
     >
       <View style={[styles.container, isDarkMode ? styles.dark : styles.light]}>
@@ -72,7 +72,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    resizeMode: "cover",
+    resizeMode: "cover", // Ensure the background image covers the entire screen
   },
   container: {
     flex: 1,
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     padding: Platform.OS === "web" ? 30 : 20, // More padding for web
     alignItems: "center",
     borderRadius: 10,
+    marginBottom: 20, 
   },
   headerText: {
     fontSize: Platform.OS === "web" ? 32 : 24, // Larger font for web

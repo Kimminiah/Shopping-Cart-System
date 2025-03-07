@@ -1,15 +1,35 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const CartItem = ({ item, onAdd, onRemove }) => {
+const CartItem = ({ item, onAdd, onRemove, isDarkMode }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.price}>₱{item.price.toFixed(2)}</Text>
+    <View style={[styles.container, isDarkMode ? styles.dark : styles.light]}>
+      {/* Product Name and Price */}
+      <View style={styles.details}>
+        <Text style={[styles.name, isDarkMode ? styles.darkText : styles.lightText]}>
+          {item.name}
+        </Text>
+        <Text style={[styles.price, isDarkMode ? styles.darkText : styles.lightText]}>
+          ${item.price.toFixed(2)} x {item.quantity}
+        </Text>
+      </View>
+
+      {/* Quantity Buttons */}
       <View style={styles.quantityContainer}>
-        <Button title="-" onPress={onRemove} color="#FFA500" /> {/* Orange button */}
-        <Text style={styles.quantity}>{item.quantity}</Text>
-        <Button title="+" onPress={onAdd} color="#FFA500" /> {/* Orange button */}
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="-"
+            onPress={onRemove}
+            color={isDarkMode ? "#FFA500" : "#FFA500"} // Orange color for the button
+          />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="+"
+            onPress={onAdd}
+            color={isDarkMode ? "#FFA500" : "#FFA500"} // Orange color for the button
+          />
+        </View>
       </View>
     </View>
   );
@@ -25,23 +45,35 @@ const styles = StyleSheet.create({
     borderBottomColor: "#FFA500", // Orange border
     marginBottom: 10,
   },
+  details: {
+    flex: 1, // Take up remaining space
+  },
   name: {
     fontSize: 16,
-    color: "#000000", // Black text for product name
   },
   price: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#FFA500", // Orange text for price
   },
   quantityContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
-  quantity: {
-    marginHorizontal: 10,
-    fontSize: 16,
-    color: "#000000", // Black text for quantity
+  buttonWrapper: {
+    width: 40, // Fixed width for buttons
+    marginHorizontal: 5, // Space between buttons
+  },
+  light: {
+    backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white
+  },
+  dark: {
+    backgroundColor: "rgba(18, 18, 18, 0.8)", // Semi-transparent dark
+  },
+  lightText: {
+    color: "#000000",
+  },
+  darkText: {
+    color: "#FFFFFF",
   },
 });
 
