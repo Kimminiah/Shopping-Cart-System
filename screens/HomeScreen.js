@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, Button, FlatList, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, Text, Button, FlatList, StyleSheet, ImageBackground, Image, Platform } from "react-native";
 import { CartContext } from "../context/CartContext";
 import ProductItem from "../components/ProductItem";
 
@@ -9,19 +9,19 @@ const products = [
     id: 1,
     name: "Eau de Parfum - Citrus Bliss",
     price: 50,
-    image: require("../assets/parfum.jpg"), // Add your image path here
+    image: require("../assets/parfum.jpg"), 
   },
   {
     id: 2,
     name: "Eau de Toilette - Midnight Oud",
     price: 75,
-    image: require("../assets/Toilette.jpg"), // Add your image path here
+    image: require("../assets/Toilette.jpg"), 
   },
   {
     id: 3,
     name: "Eau de Cologne - Fresh Linen",
     price: 40,
-    image: require("../assets/cologne.jpg"), // Add your image path here
+    image: require("../assets/cologne.jpg"), 
   },
 ];
 
@@ -76,23 +76,23 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20,
+    padding: Platform.OS === "web" ? 40 : 20, // More padding for web
   },
   header: {
     backgroundColor: "rgba(255, 165, 0, 0.8)", // Semi-transparent orange
-    padding: 20,
+    padding: Platform.OS === "web" ? 30 : 20, // More padding for web
     alignItems: "center",
     borderRadius: 10,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: Platform.OS === "web" ? 32 : 24, // Larger font for web
     fontWeight: "bold",
   },
   productList: {
-    padding: 20,
+    padding: Platform.OS === "web" ? 40 : 20, // More padding for web
   },
   cartButtonContainer: {
-    padding: 20,
+    padding: Platform.OS === "web" ? 40 : 20, // More padding for web
   },
   light: {
     backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white
